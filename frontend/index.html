@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoeTrace - NFT Supply Chain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+    <div class="container mx-auto p-6 max-w-3xl">
+        
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-blue-600 mb-2">👟 ShoeTrace NFT</h1>
+            <p class="text-gray-600">Hệ thống truy xuất nguồn gốc giày chống hàng giả</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md mb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold">🔗 Ví Web3</h2>
+                <span id="connect-log" class="text-sm font-medium"></span>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button id="connect-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition">
+                    Kết nối MetaMask
+                </button>
+                <div class="text-sm">
+                    <p>Ví: <span id="wallet-address" class="font-mono text-gray-500">...</span></p>
+                    <p>Vai trò: <span id="current-role" class="font-bold text-purple-600">...</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md mb-6 border-l-4 border-green-500">
+            <h2 class="text-xl font-bold mb-2">🏭 1. Sản Xuất (Factory Only)</h2>
+            <p class="text-sm text-gray-500 mb-4">Tạo NFT đại diện cho đôi giày vật lý.</p>
+            
+            <div class="flex gap-3">
+                <input type="number" id="shoe-id-input" placeholder="Nhập Mã Giày (VD: 8888)" class="border p-2 rounded w-full">
+                <button id="mint-btn" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-semibold whitespace-nowrap">
+                    Mint NFT
+                </button>
+            </div>
+            <div id="mint-log" class="mt-2 text-sm font-medium"></div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md mb-6 border-l-4 border-yellow-500">
+            <h2 class="text-xl font-bold mb-2">🚚 2. Phân Phối (Transfer)</h2>
+            <p class="text-sm text-gray-500 mb-4">Chuyển quyền sở hữu NFT cho đối tác tiếp theo.</p>
+            
+            <div class="grid grid-cols-1 gap-3">
+                <div>
+                    <label class="text-xs font-bold text-gray-500 uppercase">Token ID</label>
+                    <input type="number" id="transfer-token-id" placeholder="ID NFT cần chuyển" class="border p-2 rounded w-full bg-gray-50">
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-gray-500 uppercase">Người nhận</label>
+                    <select id="transfer-to-address" class="border p-2 rounded w-full bg-white">
+                        </select>
+                </div>
+                <button id="transfer-btn" class="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded font-bold mt-2">
+                    Xác nhận Chuyển
+                </button>
+            </div>
+            <div id="transfer-log" class="mt-2 text-sm font-medium"></div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-500">
+            <h2 class="text-xl font-bold mb-2">🔍 3. Kiểm Tra Nguồn Gốc (Khách Hàng)</h2>
+            <p class="text-sm text-gray-500 mb-4">Nhập Token ID để xem lịch sử toàn vẹn của sản phẩm.</p>
+            
+            <div class="flex gap-3">
+                <input type="number" id="provenance-token-id" placeholder="Token ID cần tra cứu" class="border p-2 rounded w-full">
+                <button id="check-btn" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded font-semibold whitespace-nowrap">
+                    Tra Cứu
+                </button>
+            </div>
+            <div id="authenticity-log" class="mt-2 text-sm font-medium"></div>
+            
+            <div id="provenance-results"></div>
+        </div>
+
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
