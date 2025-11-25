@@ -1,4 +1,3 @@
-// scripts/deploy.js
 const hre = require("hardhat");
 
 async function main() {

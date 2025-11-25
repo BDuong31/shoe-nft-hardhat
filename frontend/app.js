@@ -3,6 +3,7 @@ import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@6.13.1/+esm";
 // Bước 1. Cấu hình hợp đồng thông minh (Smart Contract)
 const CONTRACT_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; 
 
+// ABI của hợp đồng (Contract ABI)
 const CONTRACT_ABI = [
    {
       "inputs": [],
@@ -732,7 +733,7 @@ async function mintProduct() {
         log("mint-log", "Đang gửi giao dịch Mint...");
         
         // Gửi transaction
-        const tx = await contract.mintProduct(shoeID);
+        const tx = await contract.mintProduct(shoeID); // gọi hàm đào token trên hợp đồng
         log("mint-log", `Đang chờ xác nhận trên Blockchain...`);
         
         // Chờ transaction hoàn tất
